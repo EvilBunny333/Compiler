@@ -1,7 +1,7 @@
 # Compiler
 
 #Start git Repo
-
+#in cmd:
 #find the folder on your PC where you want to initialize the repository
 #use git init
 #use git clone with the path of this repo
