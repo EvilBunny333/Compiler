@@ -7,6 +7,7 @@
 #use git clone with the path of this repo
 
 #have flex for windows installed
+#change the working directory of flex to your repository
 
 #use lex program
 Goto to Command Prompt(cmd)
