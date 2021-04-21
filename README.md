@@ -1,10 +1,12 @@
 # Compiler
 
 #Start git Repo
-find the folder on your PC where you want to initialize the repository
-use git init
-use git clone with the path of this repo
-have flex for windows installed
+
+#find the folder on your PC where you want to initialize the repository
+#use git init
+#use git clone with the path of this repo
+
+#have flex for windows installed
 
 #use lex program
 Goto to Command Prompt(cmd)
