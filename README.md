@@ -20,9 +20,9 @@ Goto to Command Prompt(cmd)
 
 - Goto the directory where you have saved the program
 
-- Type in command :-  flex filename.l
+- Type in command :-  flex filename
 
 - Type in command :- gcc lex.yy.c
 
-- Execute/Run for windows command promt :-     a.exe    
+- Execute/Run for windows command promt :-     Compiler.exe    
 The line "enter a string" should appear => its working!
