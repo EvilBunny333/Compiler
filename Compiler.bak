@@ -9,32 +9,26 @@
  
  
 %%
- 
-[(else)(if)] {
+[ \t]+; 
+
+else|if {
 printf("identifier");
-return;
 } 
 
 [a-zA-Z]+ {
  printf("string");
- return;
 }
  
 [0-9]+ {
  printf("number");
- return;
 }
 
 [+*/\-] {
 printf("math");
-return;
 }
 
-[""/t/n]+;
-
-.+ {
- printf("something else");
- return;
+.|\n {
+ ECHO;
 }
  
 %%
