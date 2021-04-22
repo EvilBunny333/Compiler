@@ -1,4 +1,5 @@
 %{
+#include "Parser.tab.h"
 #include <stdio.h>
 #include <string.h>
 #undef yywrap
@@ -12,29 +13,27 @@
 [ \t]+; 
 
 else|if|while|for {
-printf("identifier");
+return IDENTIFIER;
 } 
 
 [a-zA-Z]+ {
- printf("string");
+ return STRING;
 }
  
 [0-9]+ {
- printf("number");
+return NUMBER;
 }
 
 [+*/\-] {
-printf("math");
+return MATH;
 }
 
-.|\n {
+. {
  ECHO;
+}
+
+\n {
+return 0;
 }
  
 %%
-
-main()
-{
- printf("Enter a string");
- yylex();
-}

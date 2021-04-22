@@ -1,0 +1,24 @@
+%{
+	#include<stdio.h>
+%}
+
+%token MATH NUMBER IDENTIFIER STRING
+
+%% 
+calc: NUMBER MATH NUMBER;
+%%
+
+extern FILE *yyin;
+
+main(){
+yylex();
+ while(!feof(yyin)){
+  yyparse();
+ }
+}
+
+yyerror(s)
+char *s;
+{
+fprintf(stderr, "%s\n",s);
+}
