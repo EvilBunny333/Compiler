@@ -22,7 +22,7 @@ Goto to Command Prompt(cmd)
 
 - Type in command :-  flex filename
 
-- Type in command :- gcc lex.yy.c
+- Type in command :- gcc lex.yy.c -o Compiler.exe
 
 - Execute/Run for windows command promt :-     Compiler.exe    
 The line "enter a string" should appear => its working!
