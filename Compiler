@@ -12,7 +12,7 @@
 [ \t]+; 
 
 else|if|while|for {
-printf("identifier");
+printf("keyword");
 } 
 
 [a-zA-Z]+ {
