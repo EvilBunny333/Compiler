@@ -5,7 +5,7 @@
 %token MATH NUMBER IDENTIFIER STRING
 
 %% 
-calc: NUMBER MATH NUMBER;
+calc: NUMBER MATH NUMBER {printf("This is a Calculation");};
 %%
 
 extern FILE *yyin;

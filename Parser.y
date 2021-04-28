@@ -2,7 +2,7 @@
 	#include<stdio.h>
 %}
 
-%token MATH NUMBER IDENTIFIER STRING
+%token MATH NUMBER KEYWORD STRING
 
 %% 
 calc: NUMBER MATH NUMBER {printf("This is a Calculation");};

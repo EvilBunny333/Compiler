@@ -48,7 +48,7 @@ extern int yydebug;
    enum yytokentype {
      MATH = 258,
      NUMBER = 259,
-     IDENTIFIER = 260,
+     KEYWORD = 260,
      STRING = 261
    };
 #endif

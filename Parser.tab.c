@@ -106,7 +106,7 @@ extern int yydebug;
    enum yytokentype {
      MATH = 258,
      NUMBER = 259,
-     IDENTIFIER = 260,
+     KEYWORD = 260,
      STRING = 261
    };
 #endif
@@ -436,7 +436,7 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "MATH", "NUMBER", "IDENTIFIER", "STRING",
+  "$end", "error", "$undefined", "MATH", "NUMBER", "KEYWORD", "STRING",
   "$accept", "calc", YY_NULL
 };
 #endif

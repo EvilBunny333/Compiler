@@ -13,7 +13,7 @@
 [ \t]+; 
 
 else|if|while|for {
-return IDENTIFIER;
+return KEYWORD;
 } 
 
 [a-zA-Z]+ {

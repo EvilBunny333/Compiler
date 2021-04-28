@@ -629,7 +629,7 @@ case 2:
 YY_RULE_SETUP
 #line 15 "Compiler.l"
 {
-return IDENTIFIER;
+return KEYWORD;
 } 
 	YY_BREAK
 case 3:
