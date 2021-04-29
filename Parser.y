@@ -2,10 +2,22 @@
 	#include<stdio.h>
 %}
 
-%token MATH NUMBER KEYWORD STRING
+%token NUMBER STRING INT
+%left '+' '-'
+%left '*' '/'
 
 %% 
-calc: NUMBER MATH NUMBER {printf("This is a Calculation");};
+S : M {
+printf("Result = %d\n", $$);
+return 0;
+}
+
+M: M '+' M {$$ = $1 + $3;}
+| M '-' M {$$ = $1 - $3;}
+| M '*' M {$$ = $1 * $3;}
+| M '/' M {$$ = $1 / $3;}
+| NUMBER {$$ = $1;}
+;
 %%
 
 extern FILE *yyin;

@@ -10,22 +10,40 @@
  
  
 %%
+#ignore
 [ \t]+; 
 
-else|if|while|for {
-return KEYWORD;
-} 
+#dataTypes
 
+int {
+return INT;
+}
+
+#data
 [a-zA-Z]+ {
  return STRING;
 }
  
 [0-9]+ {
+yylval = atoi(yytext);
 return NUMBER;
 }
 
-[+*/\-] {
-return MATH;
+#math
+\+ {
+return '+';
+}
+
+\- {
+return '-';
+}
+
+\* {
+return '*';
+}
+
+\/ {
+return '/';
 }
 
 . {

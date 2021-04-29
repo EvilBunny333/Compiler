@@ -46,10 +46,9 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     MATH = 258,
-     NUMBER = 259,
-     KEYWORD = 260,
-     STRING = 261
+     NUMBER = 258,
+     STRING = 259,
+     INT = 260
    };
 #endif
 
