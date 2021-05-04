@@ -16,13 +16,14 @@
 
 
 #use lex program
-Goto to Command Prompt(cmd)
+
+- Goto to Command Prompt(cmd)
 
 - Goto the directory where you have saved the program
 
-- Type in command :-  flex filename
+- Type in command :  flex Compiler
 
-- Type in command :- gcc lex.yy.c -o Compiler.exe
+- Type in command : gcc lex.yy.c -o Compiler.exe
 
 - Execute/Run for windows command promt :-     Compiler.exe    
 The line "enter a string" should appear => its working!
