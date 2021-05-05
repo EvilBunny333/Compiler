@@ -86,7 +86,10 @@
 # define YYERROR_VERBOSE 0
 #endif
 
-
+/* In a future release of Bison, this section will be replaced
+   by #include "Parser.tab.h".  */
+#ifndef YY_YY_PARSER_TAB_H_INCLUDED
+# define YY_YY_PARSER_TAB_H_INCLUDED
 /* Enabling traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -131,12 +134,12 @@ int yyparse ();
 #endif
 #endif /* ! YYPARSE_PARAM */
 
-
+#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
 /* Line 390 of yacc.c  */
-#line 140 "Parser.tab.c"
+#line 143 "Parser.tab.c"
 
 #ifdef short
 # undef short
@@ -1358,7 +1361,7 @@ return 0;
 
 
 /* Line 1792 of yacc.c  */
-#line 1362 "Parser.tab.c"
+#line 1365 "Parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1596,7 +1599,7 @@ yyreturn:
 extern FILE *yyin;
 
 main(){
-printf("Type in a calculation");
+printf("Type in a calculation\n");
 yylex();
  while(!feof(yyin)){
   yyparse();

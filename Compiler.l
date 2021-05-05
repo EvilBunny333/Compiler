@@ -6,52 +6,17 @@
 #define yywrap() 1	
 ;
  
-%}
- 
- 
+%} 
+
 %%
-#ignore
-[ \t]+; 
-
-#dataTypes
-
-int {
-return INT;
-}
-
-#data
-[a-zA-Z]+ {
- return STRING;
-}
- 
-[0-9]+ {
-yylval = atoi(yytext);
-return NUMBER;
-}
-
-#math
-\+ {
-return '+';
-}
-
-\- {
-return '-';
-}
-
-\* {
-return '*';
-}
-
-\/ {
-return '/';
-}
-
-. {
- ECHO;
-}
-
-\n {
-return 0;
-}
- 
-%%
+[0-9]+   {yylval = (int)yytext; return NUMBER;} 
+[\t\n]   ; 
+"+"      {return PLUS;} 
+"-"      {return MINUS;}
+"*"      {return TIMES;} 
+"/"      {return DIVIDE;} 
+"^"      {return POWER;} 
+"("      {return LEFT_PARENTHESIS;} 
+")"      {return RIGHT_PARENTHESIS;} 
+";"      {return END;} 
+%% 
