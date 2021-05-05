@@ -26,5 +26,5 @@ Goto to Command Prompt(cmd)
 - Type in command :- gcc lex.yy.c Parser.tab.c
 
 - Execute/Run for windows command promt :-     a.exe    
-If you type in 1+2 the calculation should appear, 
-anything that is not a simple calculation should generate a syntax error
+- Some kind of "type something in should appear"
+- At the moment the first input will always make a syntax error, but the second should work
