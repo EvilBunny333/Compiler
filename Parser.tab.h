@@ -47,8 +47,14 @@ extern int yydebug;
       know about them.  */
    enum yytokentype {
      NUMBER = 258,
-     STRING = 259,
-     INT = 260
+     PLUS = 259,
+     MINUS = 260,
+     TIMES = 261,
+     DIVIDE = 262,
+     POWER = 263,
+     LEFT_PARENTHESIS = 264,
+     RIGHT_PARENTHESIS = 265,
+     END = 266
    };
 #endif
 
