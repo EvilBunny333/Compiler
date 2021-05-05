@@ -1,0 +1,40 @@
+%{
+#include <stdio.h>
+#include <string.h>
+#undef yywrap
+#define yywrap() 1	
+;
+ 
+%}
+ 
+ 
+%%
+[ \t]+; 
+
+else|if|while|for {
+printf("keyword");
+} 
+
+[a-zA-Z]+ {
+ printf("string");
+}
+ 
+[0-9]+ {
+ printf("number");
+}
+
+[+*/\-] {
+printf("math");
+}
+
+.|\n {
+ ECHO;
+}
+ 
+%%
+
+main()
+{
+ printf("Enter a string");
+ yylex();
+}

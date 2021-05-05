@@ -15,6 +15,7 @@
 #change the working directory of flex to your repository
 
 
+<<<<<<< HEAD
 #use lex with yacc
 Goto to Command Prompt(cmd)
 
@@ -24,6 +25,17 @@ Goto to Command Prompt(cmd)
 - Type in command : yacc -d Parser.y
 
 - Type in command :- gcc lex.yy.c Parser.tab.c
+=======
+#use lex program
+
+- Goto to Command Prompt(cmd)
+
+- Goto the directory where you have saved the program
+
+- Type in command :  flex Compiler
+
+- Type in command : gcc lex.yy.c -o Compiler.exe
+>>>>>>> 66a6ebf025901f6445c738191761ba94ec6727cc
 
 - Execute/Run for windows command promt :-     a.exe    
 - Some kind of "type something in should appear"
