@@ -23,6 +23,7 @@ M: M '+' M {$$ = $1 + $3;}
 extern FILE *yyin;
 
 main(){
+printf("Type in a calculation\n");
 yylex();
  while(!feof(yyin)){
   yyparse();
