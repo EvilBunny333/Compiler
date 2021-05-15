@@ -111,11 +111,11 @@ return '(';
 return ')';
 }
 
-{ {
+\{ {
 return '{';
 }
 
-} {
+\} {
 return '}';
 }
 

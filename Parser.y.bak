@@ -7,26 +7,34 @@
 %left '*' '/'
 %left '(' ')'
 %% 
-S : Stmt {printf("STMT");}
+S : M 
+| V
+| Stmt
+| Var
 ;
-Stmt: IF V '{' M '}' {printf("IF");}
-| IF V '{' M '}' ELSE '{' M '}' {printf("IF ELSE");}
-| WHILE V '{' M '}' {}
-| FOR '(' INTNUMBER ',' V ',' M ')' '{' M '}' {}
-| M {printf("Result = %d\n", $$);return 0;}
+Stmt: IF V M {printf("IF");return 0;}
+| IF V M ELSE M {printf("IF ELSE");}
+| WHILE V M {printf("WHILE");}
+| FOR '(' INTNUMBER ',' V ',' M ')' M {printf("FOR");}
 ;
-M: M '+' M {$$ = $1 + $3;}
-| M '-' M {$$ = $1 - $3;}
-| M '*' M {$$ = $1 * $3;}
-| M '/' M {$$ = $1 / $3;}
-| INTNUMBER {$$ = $1;}
+V: '(' V ')' {}
+| M '=' '=' M {$$ = ($1 == $4);printf("V");}
+| M '>' M {printf("V");}
+| M '<' M {printf("V");}
+| M '>' '=' M {printf("V");}
+| M '<' '=' M {printf("V");}
 ;
-V:'(' M '==' M ')' {}
-| '(' M '>' M ')' {}
-| '(' M '<' M ')' {}
-| '(' M '>' '=' M ')' {}
-| '(' M '<' '=' M ')' {}
+M: '{' M '}' {}
+| M '+' M {$$ = $1 + $3;printf("M");}
+| M '-' M {$$ = $1 - $3;printf("M");}
+| M '*' M {$$ = $1 * $3;printf("M");}
+| M '/' M {$$ = $1 / $3;printf("M");}
+| INTNUMBER {printf("number");}
 ;
+
+Var: INT STRING '=' INTNUMBER
+;
+
 %%
 
 extern FILE *yyin;

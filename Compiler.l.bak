@@ -16,6 +16,7 @@
 #Keywords
 
 if {
+
 return IF;
 }
 
@@ -100,6 +101,7 @@ return '*';
 
 \/ {
 return '/';
+}
 
 \( {
 return '(';
