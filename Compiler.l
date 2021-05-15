@@ -13,23 +13,75 @@
 #ignore
 [ \t]+; 
 
+#Keywords
+
+if {
+return IF;
+}
+
+else {
+return ELSE;
+}
+
+for {
+return FOR;
+}
+
+while {
+return WHILE;
+}
+
+
+
 #dataTypes
+
 
 int {
 return INT;
 }
+
+float {
+return FLOAT;
+}
+
+bool {
+return BOOL;
+}
+
+
+
 
 #data
 [a-zA-Z]+ {
  return STRING;
 }
  
+[a-zA-Z] {
+ return CHAR;
+}
+ 
 [0-9]+ {
 yylval = atoi(yytext);
-return NUMBER;
+return INTNUMBER;
 }
 
+[0-9]*[,][0-9]+ {
+yylval = atoi(yytext);
+return FLOATNUMBER;
+}
+
+[a-zA-Z]+\[[0-9]+\] {
+ return ARRAY;
+}
+
+
+
 #math
+
+= {
+return '=';
+}
+
 \+ {
 return '+';
 }
