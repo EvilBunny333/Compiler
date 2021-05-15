@@ -16,6 +16,7 @@
 #Keywords
 
 if {
+
 return IF;
 }
 
@@ -56,10 +57,6 @@ return BOOL;
  return STRING;
 }
  
-[a-zA-Z] {
- return CHAR;
-}
- 
 [0-9]+ {
 yylval = atoi(yytext);
 return INTNUMBER;
@@ -82,6 +79,14 @@ return FLOATNUMBER;
 return '=';
 }
 
+> {
+return '>';
+}
+
+\< {
+return '<';
+}
+
 \+ {
 return '+';
 }
@@ -96,6 +101,26 @@ return '*';
 
 \/ {
 return '/';
+}
+
+\( {
+return '(';
+}
+
+\) {
+return ')';
+}
+
+{ {
+return '{';
+}
+
+} {
+return '}';
+}
+
+, {
+return ',';
 }
 
 . {

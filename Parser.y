@@ -2,21 +2,30 @@
 	#include<stdio.h>
 %}
 
-%token NUMBER STRING INT
+%token STRING INT IF ELSE FOR WHILE FLOAT BOOL INTNUMBER FLOATNUMBER ARRAY 
 %left '+' '-'
 %left '*' '/'
-
+%left '(' ')'
 %% 
-S : M {
-printf("Result = %d\n", $$);
-return 0;
-}
-
+S : Stmt {printf("STMT");}
+;
+Stmt: IF V '{' M '}' {printf("IF");}
+| IF V '{' M '}' ELSE '{' M '}' {printf("IF ELSE");}
+| WHILE V '{' M '}' {}
+| FOR '(' INTNUMBER ',' V ',' M ')' '{' M '}' {}
+| M {printf("Result = %d\n", $$);return 0;}
+;
 M: M '+' M {$$ = $1 + $3;}
 | M '-' M {$$ = $1 - $3;}
 | M '*' M {$$ = $1 * $3;}
 | M '/' M {$$ = $1 / $3;}
-| NUMBER {$$ = $1;}
+| INTNUMBER {$$ = $1;}
+;
+V:'(' M '=' '=' M ')' {}
+| '(' M '>' M ')' {}
+| '(' M '<' M ')' {}
+| '(' M '>' '=' M ')' {}
+| '(' M '<' '=' M ')' {}
 ;
 %%
 
