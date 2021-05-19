@@ -448,9 +448,9 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    13,    13,    14,    17,    18,    19,    20,    21,    23,
-      24,    25,    26,    28,    29,    30,    31,    32,    33,    35,
-      36,    37,    38,    39,    40,    41,    44,    45
+       0,    13,    13,    14,    17,    18,    27,    28,    29,    31,
+      32,    33,    34,    36,    37,    38,    39,    40,    41,    43,
+      44,    45,    46,    47,    48,    49,    52,    53
 };
 #endif
 
@@ -1402,121 +1402,128 @@ yyreduce:
 
   case 5:
 /* Line 1792 of yacc.c  */
-#line 18 "Parser.y"
-    {printf("equation is %d\n",(yyval));}
+#line 19 "Parser.y"
+    {
+if((yyval) == 1){
+printf("statement returns true\n");
+}
+else{
+printf("statement returns false\n");
+}
+}
     break;
 
   case 6:
 /* Line 1792 of yacc.c  */
-#line 19 "Parser.y"
+#line 27 "Parser.y"
     {printf("statement returns %d\n",(yyval));}
     break;
 
   case 7:
 /* Line 1792 of yacc.c  */
-#line 20 "Parser.y"
+#line 28 "Parser.y"
     {printf("var is %d\n",(yyval));}
     break;
 
   case 9:
 /* Line 1792 of yacc.c  */
-#line 23 "Parser.y"
+#line 31 "Parser.y"
     {printf("IF");return 0;}
     break;
 
   case 10:
 /* Line 1792 of yacc.c  */
-#line 24 "Parser.y"
+#line 32 "Parser.y"
     {printf("IF ELSE");}
     break;
 
   case 11:
 /* Line 1792 of yacc.c  */
-#line 25 "Parser.y"
+#line 33 "Parser.y"
     {printf("WHILE");}
     break;
 
   case 12:
 /* Line 1792 of yacc.c  */
-#line 26 "Parser.y"
+#line 34 "Parser.y"
     {printf("FOR");}
     break;
 
   case 13:
 /* Line 1792 of yacc.c  */
-#line 28 "Parser.y"
+#line 36 "Parser.y"
     {(yyval) = (yyvsp[(2) - (3)]);}
     break;
 
   case 14:
 /* Line 1792 of yacc.c  */
-#line 29 "Parser.y"
+#line 37 "Parser.y"
     {(yyval) = ((yyvsp[(1) - (4)]) == (yyvsp[(4) - (4)]));}
     break;
 
   case 15:
 /* Line 1792 of yacc.c  */
-#line 30 "Parser.y"
+#line 38 "Parser.y"
     {(yyval) = ((yyvsp[(1) - (3)]) > (yyvsp[(3) - (3)]));}
     break;
 
   case 16:
 /* Line 1792 of yacc.c  */
-#line 31 "Parser.y"
+#line 39 "Parser.y"
     {(yyval) = ((yyvsp[(1) - (3)]) < (yyvsp[(3) - (3)]));}
     break;
 
   case 17:
 /* Line 1792 of yacc.c  */
-#line 32 "Parser.y"
+#line 40 "Parser.y"
     {(yyval) = ((yyvsp[(1) - (4)]) >= (yyvsp[(4) - (4)]));}
     break;
 
   case 18:
 /* Line 1792 of yacc.c  */
-#line 33 "Parser.y"
+#line 41 "Parser.y"
     {(yyval) = ((yyvsp[(1) - (4)]) <= (yyvsp[(4) - (4)]));}
     break;
 
   case 20:
 /* Line 1792 of yacc.c  */
-#line 36 "Parser.y"
+#line 44 "Parser.y"
     {(yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]);}
     break;
 
   case 21:
 /* Line 1792 of yacc.c  */
-#line 37 "Parser.y"
+#line 45 "Parser.y"
     {(yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]);}
     break;
 
   case 22:
 /* Line 1792 of yacc.c  */
-#line 38 "Parser.y"
+#line 46 "Parser.y"
     {(yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]);}
     break;
 
   case 23:
 /* Line 1792 of yacc.c  */
-#line 39 "Parser.y"
+#line 47 "Parser.y"
     {(yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]);}
     break;
 
   case 24:
 /* Line 1792 of yacc.c  */
-#line 40 "Parser.y"
+#line 48 "Parser.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
   case 25:
 /* Line 1792 of yacc.c  */
-#line 41 "Parser.y"
+#line 49 "Parser.y"
     {(yyval) = (yyvsp[(1) - (1)]);}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1520 "Parser.tab.c"
+#line 1527 "Parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1748,7 +1755,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 48 "Parser.y"
+#line 56 "Parser.y"
 
 
 extern FILE *yyin;

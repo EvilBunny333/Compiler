@@ -15,7 +15,15 @@ input : input line
 ;
 
 line : M {printf("result %d\n",$$);}
-| V {printf("equation is %d\n",$$);}
+| V 
+{
+if($$ == 1){
+printf("statement returns true\n");
+}
+else{
+printf("statement returns false\n");
+}
+}
 | Stmt {printf("statement returns %d\n",$$);}
 | Var {printf("var is %d\n",$$);}
 | line '\n'
