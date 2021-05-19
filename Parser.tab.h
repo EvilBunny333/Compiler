@@ -56,7 +56,8 @@ extern int yydebug;
      BOOL = 265,
      INTNUMBER = 266,
      FLOATNUMBER = 267,
-     ARRAY = 268
+     ARRAY = 268,
+     IFX = 269
    };
 #endif
 

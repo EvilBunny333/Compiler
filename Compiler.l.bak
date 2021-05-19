@@ -1,9 +1,7 @@
 %{
 #include "Parser.tab.h"
 #include <stdio.h>
-#include <string.h>
-#undef yywrap
-#define yywrap() 1	
+#include <string.h>	
 ;
  
 %}
@@ -16,7 +14,6 @@
 #Keywords
 
 if {
-
 return IF;
 }
 
@@ -35,8 +32,6 @@ return WHILE;
 
 
 #dataTypes
-
-
 int {
 return INT;
 }
@@ -48,7 +43,6 @@ return FLOAT;
 bool {
 return BOOL;
 }
-
 
 
 
@@ -75,60 +69,18 @@ return FLOATNUMBER;
 
 #math
 
-= {
-return '=';
+[-+()=/*><{},] {
+return *yytext;
 }
 
-> {
-return '>';
-}
-
-\< {
-return '<';
-}
-
-\+ {
-return '+';
-}
-
-\- {
-return '-';
-}
-
-\* {
-return '*';
-}
-
-\/ {
-return '/';
-}
-
-\( {
-return '(';
-}
-
-\) {
-return ')';
-}
-
-{ {
-return '{';
-}
-
-} {
-return '}';
-}
-
-, {
-return ',';
+\n {
+return \n;
 }
 
 . {
  ECHO;
 }
-
-\n {
-return 0;
-}
  
 %%
+
+int yywrap(void) {     return 1; } 
