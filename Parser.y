@@ -10,12 +10,15 @@
 %nonassoc ELSE
 
 %% 
-S : M {printf("result %d\n",$$);}
+input : input line
+| line
+;
+
+line : M {printf("result %d\n",$$);}
 | V {printf("equation is %d\n",$$);}
 | Stmt {printf("statement returns %d\n",$$);}
 | Var {printf("var is %d\n",$$);}
-|  S '\n'
-|
+| line '\n'
 ;
 Stmt: IF '(' V ')' '{' M '}' %prec IFX {printf("IF");return 0;}
 | IF '(' V ')' '{' M '}' ELSE '{' M '}' {printf("IF ELSE");}

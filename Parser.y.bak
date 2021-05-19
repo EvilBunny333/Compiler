@@ -14,8 +14,7 @@ S : M {printf("result %d\n",$$);}
 | V {printf("equation is %d\n",$$);}
 | Stmt {printf("statement returns %d\n",$$);}
 | Var {printf("var is %d\n",$$);}
-| '\n'
-|
+| S '\n'
 ;
 Stmt: IF '(' V ')' '{' M '}' %prec IFX {printf("IF");return 0;}
 | IF '(' V ')' '{' M '}' ELSE '{' M '}' {printf("IF ELSE");}
@@ -48,7 +47,7 @@ extern FILE *yyin;
 
 main(){
 printf("Type in a calculation\n");
-(void) yyparse();
+yyparse();
 }
 
 yyerror(s)
