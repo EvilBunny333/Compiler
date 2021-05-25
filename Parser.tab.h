@@ -46,24 +46,33 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     STRING = 258,
-     INT = 259,
-     IF = 260,
-     ELSE = 261,
-     FOR = 262,
-     WHILE = 263,
-     FLOAT = 264,
-     BOOL = 265,
-     INTNUMBER = 266,
-     FLOATNUMBER = 267,
-     ARRAY = 268,
-     IFX = 269
+     INTNUMBER = 258,
+     FLOATNUMBER = 259,
+     STRING = 260,
+     IF = 261,
+     ELSE = 262,
+     FOR = 263,
+     WHILE = 264,
+     PRINT = 265,
+     ARRAY = 266,
+     INT = 267,
+     FLOAT = 268,
+     BOOL = 269,
+     IFX = 270
    };
 #endif
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+/* Line 2058 of yacc.c  */
+#line 20 "Parser.y"
+int i;char *str;
+
+/* Line 2058 of yacc.c  */
+#line 75 "Parser.tab.h"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

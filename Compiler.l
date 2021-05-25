@@ -44,20 +44,24 @@ bool {
 return BOOL;
 }
 
-
+#operation
+print {
+return PRINT;
+}
 
 #data
 [a-zA-Z]+ {
+ yylval.str = strdup(yytext);
  return STRING;
 }
  
 [0-9]+ {
-yylval = atoi(yytext);
+yylval.i = atoi(yytext);
 return INTNUMBER;
 }
 
 [0-9]*[,][0-9]+ {
-yylval = atoi(yytext);
+yylval.i = atoi(yytext);
 return FLOATNUMBER;
 }
 
