@@ -286,7 +286,7 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 #define YY_END_OF_BUFFER 24
 static yyconst short int yy_accept[87] =
     {   0,
-        0,    0,   24,   22,   22,   21,   22,   20,   20,   16,
+        0,    0,   24,   22,   22,   21,   22,   20,   22,   16,
        15,   15,   15,   15,   15,   15,   15,    0,    2,    0,
         0,    0,    0,    0,   17,    0,   16,   15,    0,   15,
        15,   15,   15,    4,   15,   15,   15,    0,    0,    0,
@@ -303,7 +303,7 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    1,    1,    4,    1,    1,    1,    1,    5,
-        5,    5,    5,    6,    5,    1,    5,    7,    7,    7,
+        5,    5,    5,    5,    5,    6,    5,    7,    7,    7,
         7,    7,    7,    7,    7,    7,    7,    1,    8,    5,
         5,    5,    1,    1,    9,    9,    9,    9,    9,    9,
         9,    9,    9,    9,   10,    9,    9,    9,    9,    9,
@@ -768,7 +768,7 @@ case 17:
 YY_RULE_SETUP
 #line 63 "Compiler.l"
 {
-yylval.i = atoi(yytext);
+yylval.fl = atof(yytext);
 return FLOATNUMBER;
 }
 	YY_BREAK
