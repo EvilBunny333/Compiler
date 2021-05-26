@@ -81,13 +81,13 @@ M:
 	$<i>$ = $<i>3;
 	int var = -1;
 	int i=0;
-	for(i = 0; i<=attr;i++){
-	if(strcmp(symbols[i].name, yylval.str) == 0){
+	for(i = 0; i<=attr;i++){ 
+	if(strcmp(symbols[i].name, $<str>1) == 0){
 	var = i;
 	break;
 	}
 	}
-	if(var >= 0 ){printlist();symbols[var].value.intval = $<i>3; printlist();} else {printf("unknown variable name");}
+	if(var >= 0 ){symbols[var].value.intval = $<i>3;} else {printf("unknown variable name");}
 	}
 | STRING { 
 	int var = -1;

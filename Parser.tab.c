@@ -477,8 +477,8 @@ static const yytype_uint8 yyrline[] =
 {
        0,    39,    39,    40,    44,    45,    50,    51,    52,    53,
       57,    58,    59,    60,    64,    65,    66,    67,    68,    69,
-      73,    74,    75,    76,    77,    78,    79,    80,    92,   105,
-     111,   119
+      73,    74,    75,    76,    77,    78,    79,    80,    93,   106,
+     112,   120
 };
 #endif
 
@@ -1553,22 +1553,23 @@ yyreduce:
 /* Line 1792 of yacc.c  */
 #line 80 "Parser.y"
     {
+	printf("helloo");
 	(yyval.i) = (yyvsp[(3) - (3)].i);
 	int var = -1;
 	int i=0;
-	for(i = 0; i<=attr;i++){
-	if(strcmp(symbols[i].name, yylval.str) == 0){
+	for(i = 0; i<=attr;i++){ 
+	if(strcmp(symbols[i].name, (yyvsp[(1) - (3)].str)) == 0){ printf("helloo3");
 	var = i;
 	break;
 	}
 	}
-	if(var >= 0 ){printlist();symbols[var].value.intval = (yyvsp[(3) - (3)].i); printlist();} else {printf("unknown variable name");}
+	if(var >= 0 ){printf("helloo4");printlist();symbols[var].value.intval = (yyvsp[(3) - (3)].i); printlist();} else {printf("unknown variable name");}
 	}
     break;
 
   case 28:
 /* Line 1792 of yacc.c  */
-#line 92 "Parser.y"
+#line 93 "Parser.y"
     { 
 	int var = -1;
 	int i=0;
@@ -1583,7 +1584,7 @@ yyreduce:
 
   case 29:
 /* Line 1792 of yacc.c  */
-#line 105 "Parser.y"
+#line 106 "Parser.y"
     {
 	(yyval.i) = (yyvsp[(4) - (4)].i);
 	attr++;
@@ -1594,7 +1595,7 @@ yyreduce:
 
   case 30:
 /* Line 1792 of yacc.c  */
-#line 111 "Parser.y"
+#line 112 "Parser.y"
     {
 	(yyval.fl) = (yyvsp[(4) - (4)].fl);
 	attr++;
@@ -1605,13 +1606,13 @@ yyreduce:
 
   case 31:
 /* Line 1792 of yacc.c  */
-#line 119 "Parser.y"
+#line 120 "Parser.y"
     {printlist();}
     break;
 
 
 /* Line 1792 of yacc.c  */
-#line 1615 "Parser.tab.c"
+#line 1616 "Parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1843,7 +1844,7 @@ yyreturn:
 
 
 /* Line 2055 of yacc.c  */
-#line 122 "Parser.y"
+#line 123 "Parser.y"
 
 
 extern FILE *yyin;
