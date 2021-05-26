@@ -41,7 +41,7 @@ input line
 ;
 
 line: 
-M {printf("result %d\n",$<i>$);}
+M {printf("result %f\n",$<fl>$);}
 | V 
 	{
 	if($<i>1 == 1){printf("statement returns true\n");}
@@ -70,13 +70,13 @@ V:
 ;
 
 M: 
-'(' M ')' {$<i>$ = $<i>2;}
-| M '+' M {$<i>$ = $<i>1 + $<i>3;}
-| M '-' M {$<i>$ = $<i>1 - $<i>3;}
-| M '*' M {$<i>$ = $<i>1 * $<i>3;}
-| M '/' M {$<i>$ = $<i>1 / $<i>3;}
+'(' M ')' {$<fl>$ = $<fl>2;}
+| M '+' M {$<fl>$ = $<fl>1 + $<fl>3;}
+| M '-' M {$<fl>$ = $<fl>1 - $<fl>3;}
+| M '*' M {$<fl>$ = $<fl>1 * $<fl>3;}
+| M '/' M {$<fl>$ = $<fl>1 / $<fl>3;}
 | INTNUMBER {$<i>$ = $<i>1;}
-| FLOATNUMBER {$<i>$ = $<i>1;}
+| FLOATNUMBER {$<fl>$ = $<fl>1;}
 | STRING '=' M {
 	$<i>$ = $<i>3;
 	int var = -1;
@@ -143,7 +143,7 @@ if(symbols[i].type == 0){
 printf("%d name is %s, value is %d, type is int\n", i,symbols[i].name,symbols[i].value.intval);
 }
 else if(symbols[i].type == 1){
-printf("%d name is %s, value is %d, type is float\n", i,symbols[i].name,symbols[i].value.floatval);
+printf("%d name is %s, value is %f, type is float\n", i,symbols[i].name,symbols[i].value.floatval);
 }
 }
 }

@@ -1429,7 +1429,7 @@ yyreduce:
         case 4:
 /* Line 1792 of yacc.c  */
 #line 44 "Parser.y"
-    {printf("result %d\n",(yyval.i));}
+    {printf("result %f\n",(yyval.fl));}
     break;
 
   case 5:
@@ -1510,31 +1510,31 @@ yyreduce:
   case 20:
 /* Line 1792 of yacc.c  */
 #line 73 "Parser.y"
-    {(yyval.i) = (yyvsp[(2) - (3)].i);}
+    {(yyval.fl) = (yyvsp[(2) - (3)].fl);}
     break;
 
   case 21:
 /* Line 1792 of yacc.c  */
 #line 74 "Parser.y"
-    {(yyval.i) = (yyvsp[(1) - (3)].i) + (yyvsp[(3) - (3)].i);}
+    {(yyval.fl) = (yyvsp[(1) - (3)].fl) + (yyvsp[(3) - (3)].fl);}
     break;
 
   case 22:
 /* Line 1792 of yacc.c  */
 #line 75 "Parser.y"
-    {(yyval.i) = (yyvsp[(1) - (3)].i) - (yyvsp[(3) - (3)].i);}
+    {(yyval.fl) = (yyvsp[(1) - (3)].fl) - (yyvsp[(3) - (3)].fl);}
     break;
 
   case 23:
 /* Line 1792 of yacc.c  */
 #line 76 "Parser.y"
-    {(yyval.i) = (yyvsp[(1) - (3)].i) * (yyvsp[(3) - (3)].i);}
+    {(yyval.fl) = (yyvsp[(1) - (3)].fl) * (yyvsp[(3) - (3)].fl);}
     break;
 
   case 24:
 /* Line 1792 of yacc.c  */
 #line 77 "Parser.y"
-    {(yyval.i) = (yyvsp[(1) - (3)].i) / (yyvsp[(3) - (3)].i);}
+    {(yyval.fl) = (yyvsp[(1) - (3)].fl) / (yyvsp[(3) - (3)].fl);}
     break;
 
   case 25:
@@ -1546,7 +1546,7 @@ yyreduce:
   case 26:
 /* Line 1792 of yacc.c  */
 #line 79 "Parser.y"
-    {(yyval.i) = (yyvsp[(1) - (1)].i);}
+    {(yyval.fl) = (yyvsp[(1) - (1)].fl);}
     break;
 
   case 27:
@@ -1868,7 +1868,7 @@ if(symbols[i].type == 0){
 printf("%d name is %s, value is %d, type is int\n", i,symbols[i].name,symbols[i].value.intval);
 }
 else if(symbols[i].type == 1){
-printf("%d name is %s, value is %d, type is float\n", i,symbols[i].name,symbols[i].value.floatval);
+printf("%d name is %s, value is %f, type is float\n", i,symbols[i].name,symbols[i].value.floatval);
 }
 }
 }
