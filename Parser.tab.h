@@ -54,11 +54,10 @@ extern int yydebug;
      FOR = 263,
      WHILE = 264,
      PRINT = 265,
-     ARRAY = 266,
-     INT = 267,
-     FLOAT = 268,
-     BOOL = 269,
-     IFX = 270
+     INT = 266,
+     FLOAT = 267,
+     BOOL = 268,
+     IFX = 269
    };
 #endif
 
@@ -67,11 +66,11 @@ extern int yydebug;
 typedef union YYSTYPE
 {
 /* Line 2058 of yacc.c  */
-#line 20 "Parser.y"
+#line 22 "Parser.y"
 int i;char *str; float fl;
 
 /* Line 2058 of yacc.c  */
-#line 75 "Parser.tab.h"
+#line 74 "Parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

@@ -5,6 +5,8 @@
 	union Value {
 	int intval;
 	float floatval;
+	char *strval;
+	int boolval;
 	};
 
 	typedef struct Variable{
@@ -22,7 +24,7 @@
 %token<int> INTNUMBER
 %token<float> FLOATNUMBER
 %token<str> STRING 
-%token IF ELSE FOR WHILE PRINT ARRAY INT  FLOAT BOOL
+%token IF ELSE FOR WHILE PRINT INT  FLOAT BOOL
 
 %left '+' '-'
 %left '*' '/'
@@ -41,7 +43,7 @@ input line
 ;
 
 line: 
-M {printf("result %f\n",$<fl>$);}
+M 
 | V 
 	{
 	if($<i>1 == 1){printf("statement returns true\n");}
@@ -54,10 +56,19 @@ M {printf("result %f\n",$<fl>$);}
 ;
 
 Stmt: 
-IF '(' V ')' '{' line '}' %prec IFX {printf("IF");}
-| IF '(' V ')' '{' line '}' ELSE '{' line '}' {printf("IF ELSE");}
+IF '(' V ')' '{' line '}' %prec IFX 
+	{
+	printf("IF");
+	if($<i>3 ==1) {$<i>$ = $<i>6;}
+	else{$<i>$ = 0;}
+	}
+| IF '(' V ')' '{' line '}' ELSE '{' line '}' 
+	{
+	printf("IF ELSE");
+	if($<i>3 ==1) {$<i>$ = $<i>6;}
+	else{$<i>$ = $<i>10;}
+	}
 | WHILE '(' V ')' '{' line '}' {printf("WHILE");}
-| FOR '(' INTNUMBER ',' V ',' M ')' '{' line '}' {printf("FOR");}
 ;
 
 V: 
@@ -79,40 +90,54 @@ M:
 | FLOATNUMBER {$<fl>$ = $<fl>1;}
 | STRING '=' M {
 	$<i>$ = $<i>3;
-	int var = -1;
-	int i=0;
-	for(i = 0; i<=attr;i++){ 
-	if(strcmp(symbols[i].name, $<str>1) == 0){
-	var = i;
-	break;
-	}
-	}
+	int var = findvar($<str>1);
 	if(var >= 0 ){symbols[var].value.intval = $<i>3;} else {printf("unknown variable name");}
 	}
 | STRING { 
-	int var = -1;
-	int i=0;
-	for(i = 0; i<=attr;i++){
-	if(strcmp(symbols[i].name, yylval.str) == 0){
-	var = i;
-	break;
+	int var = findvar(yylval.str);
+	if(var >= 0 ){$<i>$ = symbols[var].value.intval;} else {printf("unknown variable name");}
 	}
-	}
-	if(var >= 0 ){$<i>$ = symbols[var].value.intval;} else {printf("unknown variable name");}}
 ;
 
 Var: 
-INT STRING '=' M {
+INT STRING '=' INTNUMBER {
+	int check = checkReDecl($<str>2);
+	if(check ==1){
 	$<i>$ = $<i>4;
 	attr++;
 	Variable var = { .name = $<str>2, .type = 0, .value.intval = $<i>4};
 	symbols[attr] = var;
 	}
-| FLOAT STRING '=' M {
+	}
+| FLOAT STRING '=' FLOATNUMBER {
+	int check = checkReDecl($<str>2);
+	if(check ==1){
 	$<fl>$ = $<fl>4;
 	attr++;
 	struct Variable var = { .name = $<str>2, .type = 1, .value.floatval = $<fl>4};
 	symbols[attr] = var;
+	}
+	}
+| STRING STRING '=' STRING {
+	int check = checkReDecl($<str>2);
+	if(check ==1){
+	$<i>$ = $<i>4;
+	attr++;
+	Variable var = { .name = $<str>2, .type = 2, .value.strval = $<str>4};
+	symbols[attr] = var;
+	}
+	}
+| BOOL STRING '=' INTNUMBER {
+	if($<i>4 == 0 | $<i>4 == 1 ){
+	int check = checkReDecl($<str>2);
+	if(check ==1){
+	$<i>$ = $<i>4;
+	attr++;
+	Variable var = { .name = $<str>2, .type = 3, .value.boolval = $<i>4};
+	symbols[attr] = var;
+	}
+	}
+	else{printf("Not a bool Value.\n");}
 	}
 ;
 
@@ -130,10 +155,30 @@ printf("Type in a calculation\n");
 yyparse();
 }
 
+int findvar(char name[])
+{
+	int var = -1;
+	int i=0;
+	for(i = 0; i<=attr;i++){ 
+	if(strcmp(symbols[i].name, name) == 0){
+	var = i;
+	return var;
+	}
+	}
+	return var;
+}
+
+int checkReDecl(char name[]){
+int var = findvar(name);
+if(var >= 0){printf("The Variable is already declared.\n");return 0;}
+else{return 1;}
+}
+
 yyerror(s)
 char *s;
 {
 fprintf(stderr, "%s\n",s);
+return 0;
 }
 
 printlist(){
@@ -145,8 +190,16 @@ printf("%d name is %s, value is %d, type is int\n", i,symbols[i].name,symbols[i]
 else if(symbols[i].type == 1){
 printf("%d name is %s, value is %f, type is float\n", i,symbols[i].name,symbols[i].value.floatval);
 }
+else if(symbols[i].type == 2){
+printf("%d name is %s, value is %s, type is string\n", i,symbols[i].name,symbols[i].value.strval);
+}
+else if(symbols[i].type == 3){
+printf("%d name is %s, value is %d, type is bool\n", i,symbols[i].name,symbols[i].value.boolval);
 }
 }
+}
+
+
 
 
 
