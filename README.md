@@ -40,22 +40,22 @@ Type in a.exe
 
 Some allowed Input types:
 
-3+5*6 returns the result
-int a = 7 declares int variable
-a = b+c changes the value of existing variable
-if(5==7){3+4}else{6} returns the value from if or else
-a<=b returns true or false
-float a = 1.0 declare float variable
-string a = hello declare string variable
-bool a = 1 declare bool variable
-print  Will show all variables
+- 3+5*6 returns the result
+- int a = 7 declares int variable
+- a = b+c changes the value of existing variable
+- if(5==7){3+4}else{6} returns the value from if or else
+- a<=b returns true or false
+- float a = 1.0 declare float variable
+- string a = hello declare string variable
+- bool a = 1 declare bool variable
+- print  Will show all variables
 
-Some not allowed inputs:
-int a = 1+2 cant use math in declaration
-redeclarations
+#Some not allowed inputs:
+- int a = 1+2 cant use math in declaration
+- redeclarations
 
-Some not implemented things:
-Calculation with float propably not possible
-While loop can be input but not functioning
-If Else output might be buggy, as in it understands the condition but still calculates the path that should not be used
+#Some not implemented things:
+- Calculation with float propably not possible
+- While loop can be input but not functioning
+- If Else output might be buggy, as in it understands the condition but still calculates the path that should not be used
 
