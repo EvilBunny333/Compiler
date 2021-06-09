@@ -1,8 +1,7 @@
 %{
 #include "Parser.tab.h"
 #include <stdio.h>
-#include <string.h>
-int linecnt = 0;
+#include <string.h>	
 ;
  
 %}
@@ -61,10 +60,15 @@ yylval.i = atoi(yytext);
 return INTNUMBER;
 }
 
-[0-9]*\.[0-9]+ {
-yylval.fl = atof(yytext);
+[0-9]*[,][0-9]+ {
+yylval.i = atoi(yytext);
 return FLOATNUMBER;
 }
+
+[a-zA-Z]+\[[0-9]+\] {
+ return ARRAY;
+}
+
 
 
 #math
@@ -74,12 +78,11 @@ return *yytext;
 }
 
 \n {
-linecnt ++;
 return '\n';
 }
 
-. {
- ECHO;
+[.~!:"´`_§&^°%#?] {
+ yyerror ("invalid character");
 }
  
 %%
