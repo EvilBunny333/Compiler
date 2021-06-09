@@ -1419,7 +1419,13 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
+        case 4:
+/* Line 1792 of yacc.c  */
+#line 46 "Parser.y"
+    {printf("Calculation returns %d \n",(yyval.i));}
+    break;
+
+  case 5:
 /* Line 1792 of yacc.c  */
 #line 48 "Parser.y"
     {
@@ -1499,31 +1505,31 @@ yyreduce:
   case 19:
 /* Line 1792 of yacc.c  */
 #line 84 "Parser.y"
-    {(yyval.fl) = (yyvsp[(2) - (3)].fl);}
+    {(yyval.i) = (yyvsp[(2) - (3)].i);}
     break;
 
   case 20:
 /* Line 1792 of yacc.c  */
 #line 85 "Parser.y"
-    {(yyval.fl) = (yyvsp[(1) - (3)].fl) + (yyvsp[(3) - (3)].fl);}
+    {(yyval.i) = (yyvsp[(1) - (3)].i) + (yyvsp[(3) - (3)].i);}
     break;
 
   case 21:
 /* Line 1792 of yacc.c  */
 #line 86 "Parser.y"
-    {(yyval.fl) = (yyvsp[(1) - (3)].fl) - (yyvsp[(3) - (3)].fl);}
+    {(yyval.i) = (yyvsp[(1) - (3)].i) - (yyvsp[(3) - (3)].i);}
     break;
 
   case 22:
 /* Line 1792 of yacc.c  */
 #line 87 "Parser.y"
-    {(yyval.fl) = (yyvsp[(1) - (3)].fl) * (yyvsp[(3) - (3)].fl);}
+    {(yyval.i) = (yyvsp[(1) - (3)].i) * (yyvsp[(3) - (3)].i);}
     break;
 
   case 23:
 /* Line 1792 of yacc.c  */
 #line 88 "Parser.y"
-    {(yyval.fl) = (yyvsp[(1) - (3)].fl) / (yyvsp[(3) - (3)].fl);}
+    {(yyval.i) = (yyvsp[(1) - (3)].i) / (yyvsp[(3) - (3)].i);}
     break;
 
   case 24:
@@ -1624,7 +1630,7 @@ yyreduce:
 
 
 /* Line 1792 of yacc.c  */
-#line 1628 "Parser.tab.c"
+#line 1634 "Parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

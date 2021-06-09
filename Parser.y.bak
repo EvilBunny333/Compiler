@@ -43,7 +43,7 @@ input line
 ;
 
 line: 
-M 
+M {printf("Calculation returns %d \n",$<fl>$);}
 | V 
 	{
 	if($<i>1 == 1){printf("statement returns true\n");}
