@@ -54,14 +54,61 @@ else{printf("statement returns false\n");}
 | line '\n'
 ;
 
-/* IF & IF ELSE & WHILE & FOR */
-Stmt: IF '(' V ')' '{' line '}' { if($<i>3 == 1){$<i>$ = $<i>6; printf("statement returns %d\n",$<i>$);}else{printf("statement is false"); } ;}
+/* Statemens */
+Stmt: IF '(' V ')' '{' line '}' { 
+/* IF */
+if($<i>3 == 1){$<i>$ = $<i>6; printf("statement returns %d\n",$<i>$);}else{printf("statement is false"); } ;}
+
+/*  Errorhandling IF */
+|IF error V ')' '{' line '}' {yyerror (" '(' in expression expected\n");}
+|IF '(' error ')' '{' line '}' {yyerror (" no comparison\n");}
+|IF '(' V error '{' line '}' {yyerror (" ')' in expression expected\n");}
+|IF '(' V ')' error line '}' {yyerror (" '{' in expression expected\n");}
+|IF '(' V ')' '{' error '}' {yyerror ("there is nothing to be excecuted\n");}
+|IF '(' V ')' '{' line error {yyerror (" '}' in expression expected\n");}
+
+/* IF ELSE */
 | IF '(' V ')' '{' line '}' ELSE '{' line '}' { 
 if($<i>3 == 1){$<i>$ = $<i>6; printf("statement returns %d\n",$<i>$);}
 else{ printf("statement returns %d\n",$<i>10);} }
 
-| WHILE '(' V ')' '{' line '}' {while($<i>3 == 1){$<i>$ = $<i>6; printf("statement returns %d\n",$<i>$);};}
-| FOR '(' INTNUMBER ',' V ',' M ')' '{' line '}' {printf("FOR");}
+/*  Errorhandling IF ELSE*/
+|IF error V ')' '{' line '}'  ELSE '{' line '}' {yyerror (" '(' in expression expected\n");}
+|IF '(' error ')' '{' line '}' ELSE '{' line '}'{yyerror (" no comparison\n");}
+|IF '(' V error '{' line '}' ELSE '{' line '}' {yyerror (" ')' in expression expected\n");}
+|IF '(' V ')' error line '}' ELSE '{' line '}' {yyerror (" '{' in IF expression expected\n");}
+|IF '(' V ')' '{' error '}' ELSE '{' line '}' {yyerror ("there is nothing to be excecuted in your IF\n");}
+|IF '(' V ')' '{' line error ELSE '{' line '}' {yyerror (" '}' in IF expression expected\n");}
+|IF '(' V ')' '{' line '}' ELSE error line '}' {yyerror (" '{' in ELSE expression expected\n");}
+|IF '(' V ')' '{' line '}' ELSE '{' error '}' {yyerror ("there is nothing to be excecuted in your ELSE\n");}
+|IF '(' V ')' '{' line '}' ELSE '{' line error {yyerror (" '}' in ELSE expression expected\n");}
+
+/* WHILE */
+| WHILE '(' V ')' '{' line '}' {
+while($<i>3 == 1){$<i>$ = $<i>6; printf("statement returns %d\n",$<i>$);};}
+
+/*  Errorhandling WHILE */
+| WHILE error V ')' '{' line '}' {yyerror (" '(' in expression expected\n");}
+| WHILE '(' error ')' '{' line '}' {yyerror (" no comparison\n");}
+| WHILE '(' V error '{' line '}' {yyerror (" ')' in expression expected\n");}
+| WHILE '(' V ')' error line '}' {yyerror (" '{' in expression expected\n");}
+| WHILE '(' V ')' '{' error '}' {yyerror ("there is nothing to be excecuted\n");}
+| WHILE '(' V ')' '{' line error {yyerror (" '}' in expression expected\n");}
+
+/* FOR */
+| FOR '(' INTNUMBER ')' '{' line '}' {
+int a = 0;
+for( a = 0; a < $<i>3; a = a + 1 ){
+      printf("statement returns %d\n",$<i>6);
+   };}
+
+/*  Errorhandling FOR */
+| FOR error INTNUMBER ')' '{' line '}' {yyerror (" '(' in expression expected\n");}
+| FOR '(' error ')' '{' line '}' {yyerror (" no counter\n");}
+| FOR '(' INTNUMBER error '{' line '}' {yyerror (" ')' in expression expected\n");}
+| FOR '(' INTNUMBER ')' error line '}' {yyerror (" '{' in expression expected\n");}
+| FOR '(' INTNUMBER ')' '{' error '}' {yyerror ("there is nothing to be excecuted\n");}
+| FOR '(' INTNUMBER ')' '{' line error {yyerror (" '}' in expression expected\n");}
 ;
 
 /* Vergleichsarten */
@@ -162,6 +209,3 @@ printf("%d name is %s\n", i,symbols[i].name);
 printf("%d value is %d\n", i,symbols[i].value.intval);
 }
 }
-
-
-
