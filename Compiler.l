@@ -60,15 +60,10 @@ yylval.i = atoi(yytext);
 return INTNUMBER;
 }
 
-[0-9]*[,][0-9]+ {
-yylval.i = atoi(yytext);
+[0-9]*[.][0-9]+ {
+yylval.fl = atof(yytext);
 return FLOATNUMBER;
 }
-
-[a-zA-Z]+\[[0-9]+\] {
- return ARRAY;
-}
-
 
 
 #math
