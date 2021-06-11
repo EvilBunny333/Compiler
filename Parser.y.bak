@@ -43,7 +43,7 @@ input line
 ;
 
 line: 
-M {printf("Calculation returns %d \n",$<fl>$);}
+M {printf("Calculation returns %d \n",$<i>$);}
 | V 
 	{
 	if($<i>1 == 1){printf("statement returns true\n");}
@@ -81,11 +81,11 @@ V:
 ;
 
 M: 
-'(' M ')' {$<fl>$ = $<fl>2;}
-| M '+' M {$<fl>$ = $<fl>1 + $<fl>3;}
-| M '-' M {$<fl>$ = $<fl>1 - $<fl>3;}
-| M '*' M {$<fl>$ = $<fl>1 * $<fl>3;}
-| M '/' M {$<fl>$ = $<fl>1 / $<fl>3;}
+'(' M ')' {$<i>$ = $<i>2;}
+| M '+' M {$<i>$ = $<i>1 + $<i>3;}
+| M '-' M {$<i>$ = $<i>1 - $<i>3;}
+| M '*' M {$<i>$ = $<i>1 * $<i>3;}
+| M '/' M {$<i>$ = $<i>1 / $<i>3;}
 | INTNUMBER {$<i>$ = $<i>1;}
 | FLOATNUMBER {$<fl>$ = $<fl>1;}
 | STRING '=' M {

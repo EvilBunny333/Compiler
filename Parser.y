@@ -28,6 +28,7 @@
 
 %left '+' '-'
 %left '*' '/'
+%right '=' '>' '<' 
 
 %nonassoc IFX 
 %nonassoc ELSE
