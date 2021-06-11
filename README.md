@@ -55,7 +55,7 @@ Some allowed Input types:
 - redeclarations
 
 #Some not implemented things:
-- Calculation with float propably not possible
-- While loop can be input but not functioning
-- If Else output might be buggy, as in it understands the condition but still calculates the path that should not be used
+- float calculation wont be displayed right because of output data type being %d(->int)
+- variable declaration does not support calculation in declaration
+- no error handling for variables
 
